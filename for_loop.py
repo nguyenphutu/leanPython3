@@ -1,6 +1,7 @@
 # in ra cac so tu 1 -> 10
-# range(n) chua tu 1 den n-1
-for i in range(11):
+# range(stop)
+# range(start, stop[, step])
+for i in range(1,11):
     # cau lenh
     print(i)
 
