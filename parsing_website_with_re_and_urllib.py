@@ -1,34 +1,19 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
-   "source": []
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 2",
-   "language": "python",
-   "name": "python2"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 2
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython2",
-   "version": "2.7.6"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 0
-}
+import urllib.request
+import urllib.parse
+import re
+
+url = 'https://pythonprogramming.net/'
+values = {'s':'basic',
+          'submit':'search'}
+data = urllib.parse.urlencode(values)
+data = data.encode('utf-8')
+req = urllib.request.Request(url,data)
+resp = urllib.request.urlopen(req)
+respData = resp.read()
+print(respData)
+# show all paragraphs in respData
+# <p>content content<p>
+paragraphs = re.findall(r'<p>(.*?)</p>',str(respData))
+
+for eachP in paragraphs:
+    print(eachP)
